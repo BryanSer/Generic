@@ -1,0 +1,50 @@
+    public static ItemStack ItemAnalyze(ItemStack is) {
+        if (!is.hasItemMeta()) {
+            return is;
+        }
+        if (!is.getItemMeta().hasLore()) {
+            return is;
+        }
+        ItemMeta im = is.getItemMeta();
+        List<String> lore = im.getLore();
+        List<Entry> es = new ArrayList<>();
+        List<String> newLore = new ArrayList<>();
+        for (String s : lore) {
+            if (!s.contains(EntryAttrCode)) {
+                newLore.add(s);
+            }
+        }
+        int LastIndexOfEntry = -1;
+        A:
+        for (int i = 0; i < newLore.size(); i++) {
+            String s = newLore.get(i);
+            for (Map.Entry<String, Entry> E : Data.Entrys.entrySet()) {
+                if (s.contains(E.getKey())) {
+                    es.add(E.getValue());
+                    LastIndexOfEntry = i;
+                    continue A;
+                }
+            }
+        }
+        Map<AttType, Double> attrs = new EnumMap<>(AttType.class);
+        for (Entry e : es) {
+            for (Map.Entry<AttType, Double> E : e.getAttrs().entrySet()) {
+                double d = 0d;
+                if (attrs.containsKey(E.getKey())) {
+                    d = attrs.get(E.getKey());
+                }
+                d += E.getValue();
+                attrs.put(E.getKey(), d);
+            }
+        }
+        LastIndexOfEntry++;
+        for (Map.Entry<AttType, Double> E : attrs.entrySet()) {
+            newLore.add(LastIndexOfEntry, EntryAttrCode + E.getKey().getDisplayName() + ": "
+                    + ((E.getValue() >= 0) ? "+" : "-") + E.getValue() + ((E.getKey().isPer()) ? "%" : "")
+            );
+            LastIndexOfEntry++;
+        }
+        im.setLore(newLore);
+        is.setItemMeta(im);
+        return is;
+    }

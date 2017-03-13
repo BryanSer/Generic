@@ -1,0 +1,17 @@
+Entry:
+    EntryPool:
+        b:
+            Item: '348 1 0 Name:&6洗词缀卷轴2 Lore:&2输入/ga_打开清洗面板|&2放入本卷轴'
+            Entry: entry.yml
+            Chance:
+             - 1|50
+             - 2|50
+        a:
+            Item: '348 1 0 Name:&6洗词缀卷轴1 Lore:&2输入/ga_打开清洗面板|&2放入本卷轴'
+            Entry: entry.yml
+            Chance:
+             - 1|50
+             - 2|50
+    Item:
+        add: '348 1 0 Name:&b增加洗词缀次数的卷轴 Lore:&2输入/ga_打开清洗面板|&2放入本卷轴'
+        fix: '348 1 0 Name:&e词缀加固卷轴 Lore:&2输入/ga_打开清洗面板|&2放入本卷轴'

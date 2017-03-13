@@ -1,0 +1,16 @@
+Display:
+    Name: 获得物品用的名字
+    #物品ID
+    ID: 1
+    #损伤值
+    Durability: 0
+Info:
+    Display: '&c赤心套装 头部'
+    TopLore: '显示在最顶端的Lore|可以多行|&6支持颜色代码'
+    Level: '&6★☆☆☆☆'
+Attr:
+    - Atk:5
+    - MovingSpeed:10%
+Set:
+#填写config中的名字
+    Code: '&c赤心套装'
